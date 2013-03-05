@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+// removed initial alert by now – it was getting annoying
+	document.getElementById("rocket_div").
+	addEventListener("click", alertCompliment, false);
+	}, false);
+
+function alertCompliment()
+{
+	document.getElementById("rocket_div").style.webkitTransform = 'translate(-120px,0px)';
+}
+
+	
+</script>
+<style>
+.screen {
+	width: 320px;
+	height: 480px;
+	/*float: left;*/
+	color: white;
+	position: absolute;
+	font-size: 50px;
+	text-align: center;
+	top: 0px;
+	left: 0px;
+	background-color: #f00;
+
+
+}
+
+div.rocket {
+	position: absolute;
+	bottom: 10px;
+	left: 20px;
+	-webkit-transition: all 1s ease-in;
+	-moz-transition: all 3s ease-in;
+	-o-transition: all 3s ease-in;
+	-ms-transition: all 3s ease-in;
+	transition: all 3s ease-in;
+	background-color:#090;
+	width:100px; height:100px;
+	
+}
+/*div.rocket:hover {
+	-webkit-transform: translate(540px, -200px);
+	-moz-transform: translate(540px, -200px);
+	-o-transform: translate(540px, -200px);
+	-ms-transform: translate(540px, -200px);
+	transition: all 2s ease-in-out;
+}*/
+
+</style>
+</head>
+
+<body>
+<div class="rocket" id="rocket_div"></div>
+</body>
+</html>

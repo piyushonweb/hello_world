@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Red Green Refactor</title>
+<style>
+/*.screen {
+	width: 320px;
+	height: 480px;
+	float: left;
+	color: white;
+	position: relative;
+	font-size: 50px;
+	text-align: center;
+	top: 0px;
+	left: 0px;
+	-webkit-transition-duration: 600ms;
+	-webkit-transition-property: translate;
+	-webkit-transform: translate (-320px, 0px);
+}*/
+
+#red {
+	-webkit-transition-duration: 600ms;
+	-webkit-transition-property: translate;
+	-webkit-transform: translate (20px, 0px);
+	background: red;
+	position: absolute;
+	width: 320px;
+	height: 480px;
+}
+.screen#green {
+	background: green;
+}
+.screen#refactor {
+	background: blue;
+}
+.screen{width:320px; height:480px;}
+.wrapper {
+	width: 320px;
+	height: 480px;
+	overflow: hidden;
+	position: absolute;
+	background-color: #FF0;
+	left: 0px;
+	top: 0px;
+}
+.wrapper div{
+	width: 320px;
+	height: 480px;
+	
+}
+#list {
+	width: 320px;
+	height: 480px;
+	position: absolute;
+	-webkit-transition-duration: 600ms;
+	-webkit-transition-property: translate;
+	-webkit-transform: translate (0px, 0px);
+	 
+	 transform:translate(0px, 0px);
+	 transition-duration:600ms;
+	 transition-property:all;
+	 
+	 z-index: 10;
+	background-color:#F0F
+}
+#list ul {
+	margin: 0px;
+	padding: 0px;
+}
+#list ul li {
+	display: block;
+	list-style-type: none;
+}
+#list ul li a {
+	display: block;
+	background-color: #FC9;
+	padding: 10px;
+	border-bottom: #FF9900 solid 1px;
+	text-decoration: none;
+	color: #000;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+#list ul li a:hover {
+	display: block;
+	background-color: #F99;
+	padding: 10px;
+	border-bottom: #FF9900 solid 1px;
+	text-decoration: none;
+	color: #000
+}
+</style>
+<script src="jquery-1.9.1.min.js"></script>
+	
+<script>
+
+//var screens = ['red', 'green', 'refactor'];
+//document.addEventListener('click', function (evt) {
+	document.addEventListener("DOMContentLoaded", function ()
+
+{
+	
+	var test = document.getElementById('list').getElementsByTagName('a');
+		for (i = 0; i< test.length; i++)
+		{
+			test[i].addEventListener("click", function(){Paint(this)}, false);			
+		}
+
+	var WrapperDiv = document.getElementById('WrapperDiv');// total div on page		
+ 	var WrapperDivTag = document.getElementById('WrapperDiv').getElementsByTagName('div');// total div on page
+	 var st = window.getComputedStyle(WrapperDivTag, null);
+	 console.log(st.getPropertyValue('width'));
+ 	//WrapperDivWidth = WrapperDivTag.offsetWidth;
+	//console.log(WrapperDivWidth);
+	//console.log(WrapperDivTag);
+	
+	
+
+	//var getWidth = document.getElementById('hello').offsetWidth; //get width
+	
+	
+});
+function Paint( sender ) {
+
+   var a_elements = document.getElementById('list').getElementsByTagName('a');
+
+    for (var i = 0, len = a_elements.length; i < len; i++ ) {
+        a_elements[ i ].style.color = 'blue';
+        a_elements[ i ].style.backgroundColor = '#FFFFFF';
+    }
+    sender.style.color = '#FFFFFF';
+    sender.style.backgroundColor = '#000000';
+	document.getElementById("list").style.webkitTransform = 'translate(-320px,0px)';
+	document.getElementById("list").style.MozTransform = 'translate(-320px,0px)';
+}
+//});
+/*document.addEventListener("DOMContentLoaded", function () {	
+var className = document.getElementsByClassName('listtarget');
+className.addEventListener("click", hello, false);
+
+}, false);*/
+
+</script>
+</head>
+
+<body>
+<div class="wrapper" style="" id="WrapperDiv">
+  <div id="list" class="screen">
+    <ul>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contents</a></li>
+      <li><a href="#">Visual</a></li>
+      <li><a href="#">CSS</a></li>
+      <li><a href="#">Javascript</a></li>
+    </ul>
+  </div>
+  <div class="screen" id="red">RED</div>
+  <div class="screen" id="green">GREEN</div>
+  <!--<div class="screen" id="refactor">REFACTOR</div>--> 
+</div>
+</body>
+</html>

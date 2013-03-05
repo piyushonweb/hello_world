@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Red Green Refactor</title>
+<style>
+/*.screen {
+	width: 320px;
+	height: 480px;
+	float: left;
+	color: white;
+	position: relative;
+	font-size: 50px;
+	text-align: center;
+	top: 0px;
+	left: 0px;
+	-webkit-transition-duration: 600ms;
+	-webkit-transition-property: translate;
+	-webkit-transform: translate (-320px, 0px);
+}*/
+
+
+#red {
+	-webkit-transition-duration: 600ms;
+	-webkit-transition-property: translate;
+	-webkit-transform: translate (0px, 0px);
+	transform: translate(0px, 0px);
+	transition-duration: 600ms;
+	transition-property: all;
+	background: red;
+	position: absolute;
+	width: 320px;
+	height: 480px;
+}
+.screen#green {
+	-webkit-transition-duration: 600ms;
+	-webkit-transition-property: translate;
+	-webkit-transform: translate (0px, 0px);
+	background: green;
+	transform: translate(0px, 0px);
+	transition-duration: 600ms;
+	transition-property: all;
+}
+.screen#refactor {
+	background: blue;
+}
+.screen {
+	width: 320px;
+	height: 480px;
+}
+.wrapper {
+	width: 320px;
+	height: 480px;
+	overflow: hidden;
+	position: absolute;
+	background-color: #FF0;
+	left: 0px;
+	top: 0px;
+}
+.wrapper div {
+	width: 320px;
+	height: 480px;
+}
+#list {
+	width: 320px;
+	height: 480px;
+	position: absolute;
+	-webkit-transition-duration: 600ms;
+	-webkit-transition-property: translate;
+	-webkit-transform: translate (0px, 0px);
+	transform: translate(0px, 0px);
+	transition-duration: 600ms;
+	transition-property: all;
+	z-index: 10;
+	background-color: #F0F
+}
+#list ul {
+	margin: 0px;
+	padding: 0px;
+}
+#list ul li {
+	display: block;
+	list-style-type: none;
+}
+#list ul li a {
+	display: block;
+	background-color: #FC9;
+	padding: 10px;
+	border-bottom: #FF9900 solid 1px;
+	text-decoration: none;
+	color: #000;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+#list ul li a:hover {
+	display: block;
+	background-color: #F99;
+	padding: 10px;
+	border-bottom: #FF9900 solid 1px;
+	text-decoration: none;
+	color: #000
+}
+.animCss {
+	-webkit-transition-duration: 600ms;
+	-webkit-transition-property: translate;
+	-webkit-transform: translate (320px, 0px);
+	transform: translate(320px, 0px);
+	transition-duration: 600ms;
+	transition-property: all;
+}
+</style>
+<script src="cordova-2.4.0.js"></script>
+<script src="jquery-1.9.1.min.js"></script>
+<script>
+$(document).ready(function(e) {
+	//var changeColor = $('#list li a');
+	$('#list li a').click(function(e) {
+        e.preventDefault();
+		$('#list li a').css({color:'blue',backgroundColor:'#fff'});
+		$(this).css({color:'#FFFFFF',backgroundColor:'#000'});
+		$("#list").css('transform','translate(-320px,0px)');
+		$("#red").css('transform','translate(0px,0px)');
+		$("#green").css('transform','translate(320px,0px)');
+    });
+
+	var WrapperDiv = $('#WrapperDiv');// main wrapper	
+	device_wid = WrapperDiv.outerWidth();	
+	
+	$('#WrapperDiv div').each(function(index, element) {
+		$(this).css('transform','translate('+ index * device_wid +'px,0px)');  
+    });
+	
+	//var WrapperDivLenght = $('#WrapperDiv div').length();
+	$('#red').click(function(e) {
+		e.preventDefault();
+		$("#list").css('transform','translate(-640px,0px)');
+		$("#red").css('transform','translate(-320px,0px)');
+		$("#green").css('transform','translate(0px,0px)');
+    });
+
+});
+
+</script>
+</head>
+
+<body>
+<div class="wrapper" style="" id="WrapperDiv">
+  <div id="list" class="screen">
+    <ul>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contents</a></li>
+      <li><a href="#">Visual</a></li>
+      <li><a href="#">CSS</a></li>
+      <li><a href="#">Javascript</a></li>
+    </ul>
+  </div>
+  <div class="screen" id="red">RED</div>
+  <div class="screen" id="green">GREEN</div>
+  <!--<div class="screen" id="refactor">REFACTOR</div>--> 
+</div>
+</body>
+</html>
